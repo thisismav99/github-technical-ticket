@@ -1,26 +1,34 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import Navbar from "./Navbar";
 import Signup from "./signup/Signup";
 import About from "./About";
 import Login from "./login/Login";
+import Dashboard from "./dashboard/Dashboard";
+import useSignedIn from "../hooks/useSignedIn";
 
 function App() {
+  const { signedIn } = useSignedIn("app");
+
   return (
     <>
       <Router>
-        <Navbar />
+        <Navbar signedIn={signedIn} />
 
         <Switch>
           <Route exact path="/">
-            <About/>
+            { signedIn ? <Redirect to="/dashboard" /> : <About/> }
           </Route>
 
           <Route path="/signup">
-            <Signup />
+            { signedIn ? <Redirect to="/dashboard" /> : <Signup /> }
           </Route>
 
           <Route path="/login">
-            <Login />
+            { signedIn ? <Redirect to="/dashboard" /> : <Login /> }
+          </Route>
+
+          <Route path="/dashboard">
+            { signedIn ? <Dashboard /> : <Redirect to="/" /> }
           </Route>
         </Switch>
       </Router>

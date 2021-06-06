@@ -19,3 +19,7 @@
 .back-btn{
     @apply border-solid border-2 border-green-500 rounded-full hover:opacity-50 text-green-500 focus:outline-none;
 }
+
+.errors{
+    @apply text-red-500;
+}
