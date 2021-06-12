@@ -1,10 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const useHighlight = (component) => {
     const [highlight, setHighlight] = useState(null);
+    const subscribe = useRef(false);
 
     useEffect(() => {
-        setHighlight(component);
+        subscribe.current = true;
+
+        if(subscribe.current){
+            setHighlight(component);
+        }
+
+        return () => subscribe.current = false;
     }, [component]);
 
     return { highlight };

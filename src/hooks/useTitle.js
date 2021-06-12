@@ -1,10 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const useTitle = (component) => {
     const [title, setTitle] = useState("TICKET APP");
+    const subscribe = useRef(false);
 
     useEffect(() => {
-        setTitle(component);
+        subscribe.current = true;
+
+        if(subscribe.current){
+            setTitle(component);
+        }
+
+        return () => subscribe.current = false;
     }, [component]);
 
     document.title = title;
