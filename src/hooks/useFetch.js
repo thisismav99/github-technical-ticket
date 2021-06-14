@@ -8,22 +8,39 @@ const useFetch = (collection) => {
     useEffect(() => {
         subscribe.current = true;
 
-        firebase.firestore().collection(collection)
-        .where("isDone", "==", false)
-        .orderBy("createdAt", "desc")
-        .onSnapshot((docs) => {
-            let ticketsList = [];
-
-            docs.forEach((doc) => {
-                ticketsList.push({...doc.data(), id: doc.id});
+        if(collection === "tickets"){
+            firebase.firestore().collection(collection)
+            .where("isDone", "==", false)
+            .orderBy("createdAt", "desc")
+            .onSnapshot((docs) => {
+                let ticketsList = [];
+    
+                docs.forEach((doc) => {
+                    ticketsList.push({...doc.data(), id: doc.id});
+                });
+                
+                if(subscribe.current){
+                    setTickets(ticketsList);
+                }
+            }, (error) => {
+                console.log(error.message);
             });
-            
-            if(subscribe.current){
-                setTickets(ticketsList);
-            }
-        }, (error) => {
-            console.log(error.message);
-        });
+        }
+        else{
+            firebase.firestore().collection("tickets")
+            .doc(collection)
+            .onSnapshot((doc) => {
+                let ticket = [];
+
+                ticket.push({...doc.data(), id: doc.id});
+
+                if(subscribe.current){
+                    setTickets(ticket);
+                }
+            }, (error) => {
+                console.log(error.message);
+            })
+        }
 
         return () => subscribe.current = false;
     }, [collection]);

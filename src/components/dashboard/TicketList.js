@@ -1,6 +1,7 @@
 import useFetch from "../../hooks/useFetch";
 import useHighlight from "../../hooks/useHighlight";
 import useTitle from "../../hooks/useTitle";
+import { Link } from "react-router-dom";
 
 const TicketList = () => {
     useTitle("TICKET APP - DASHBOARD");
@@ -30,9 +31,9 @@ const TicketList = () => {
                                 <p>{new Date(ticket.createdAt.toDate()).toString()}</p>
                                 <p>{ticket.user}</p>
                             </div>
-                            <button className="btn">
-                                SOLVE
-                            </button>
+                            <Link to={`/solve/${ticket.id}`}>
+                                <button className="btn">SOLVE</button>
+                            </Link>
                         </div>
                     </div>
                 </div>
