@@ -14,10 +14,10 @@ const Dashboard = () => {
                         <p className="text-green-500 text-xl underline w-full">DASHBOARD</p>
                         <div className="w-full mt-3">
                             <Link to="/dashboard">
-                                <button className="w-full hover:underline focus:outline-none text-green-500">HOME</button>
+                                <button id="home-btn" className="dashboard-btn">HOME</button>
                             </Link>
                             <Link to="/createticket">
-                                <button className="w-full hover:underline focus:outline-none text-green-500">CREATE TICKET</button>
+                                <button id="create-ticket-btn" className="dashboard-btn">CREATE TICKET</button>
                             </Link>
                         </div>
                     </div>

@@ -2,10 +2,18 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import firebase from "../../firebase";
 import { serverTime } from "../../firebase";
+import useHighlight from "../../hooks/useHighlight";
 import useTitle from "../../hooks/useTitle";
 
 const CreateTicket = ({ email }) => {
     useTitle("TICKET APP - CREATE TICKET");
+
+    const { highlight } = useHighlight("createticket");
+
+    if(highlight !== null && highlight === "createticket"){
+        document.querySelector("#home-btn").classList.remove("border-solid", "border-r-4", "border-green-500");
+        document.querySelector("#create-ticket-btn").classList.add("border-solid", "border-r-4", "border-green-500");
+    }
 
     const { register, handleSubmit, formState:{ errors }, reset } = useForm();
 

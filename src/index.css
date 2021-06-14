@@ -23,3 +23,7 @@
 .errors{
     @apply text-red-500;
 }
+
+.dashboard-btn{
+    @apply w-full hover:underline focus:outline-none text-green-500;
+}

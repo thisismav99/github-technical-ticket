@@ -1,10 +1,18 @@
 import useFetch from "../../hooks/useFetch";
+import useHighlight from "../../hooks/useHighlight";
 import useTitle from "../../hooks/useTitle";
 
 const TicketList = () => {
     useTitle("TICKET APP - DASHBOARD");
     
     const { tickets } = useFetch("tickets");
+
+    const { highlight } = useHighlight("ticketlist");
+
+    if(highlight !== null && highlight === "ticketlist"){
+        document.querySelector("#home-btn").classList.add("border-solid", "border-r-4", "border-green-500");
+        document.querySelector("#create-ticket-btn").classList.remove("border-solid", "border-r-4", "border-green-500");
+    }
 
     return (
         <div className="grid grid-cols-12 gap-2 text-center">
