@@ -2,8 +2,11 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import firebase from "../../firebase";
 import { serverTime } from "../../firebase";
+import useTitle from "../../hooks/useTitle";
 
 const CreateTicket = ({ email }) => {
+    useTitle("TICKET APP - CREATE TICKET");
+
     const { register, handleSubmit, formState:{ errors }, reset } = useForm();
 
     const [message, setMessage] = useState(null);
@@ -19,7 +22,8 @@ const CreateTicket = ({ email }) => {
            title: data.title,
            description: data.description,
            user,
-           createdAt
+           createdAt,
+           isDone: false
         })
         .then(() => {
             setMessage("Ticket has been created!");

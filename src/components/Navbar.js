@@ -16,7 +16,7 @@ const Navbar = ({signedIn}) => {
     }
 
     return (
-        <div className="h-14 grid grid-cols-12 px-5 pt-1 border-solid border-b-2 border-green-500 fixed w-full">
+        <div className="h-14 grid grid-cols-12 px-5 pt-1 border-solid border-b-2 border-green-500 fixed w-full bg-white">
             { redirect && <Redirect to="/" /> }
 
             <div className="col-span-6">
