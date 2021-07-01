@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Link, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 import useSignedIn from "../../hooks/useSignedIn";
 import CreateTicket from "./CreateTicket";
 import TicketList from "./TicketList";
@@ -33,9 +33,6 @@ const Dashboard = () => {
                         </Route>
                         <Route path="/solve/:id">
                             { email && <Solve email={email} /> }
-                        </Route>
-                        <Route path="*">
-                            <Redirect to="/dashboard" />
                         </Route>
                     </Switch>
                 </div>

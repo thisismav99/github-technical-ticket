@@ -3,6 +3,7 @@ import firebase from "../firebase";
 
 const useFetch = (collection) => {
     const [tickets, setTickets] = useState([]);
+    const [loading, setLoading] = useState(true);
     const subscribe = useRef(false);
 
     useEffect(() => {
@@ -21,6 +22,7 @@ const useFetch = (collection) => {
                 
                 if(subscribe.current){
                     setTickets(ticketsList);
+                    setLoading(false);
                 }
             }, (error) => {
                 console.log(error.message);
@@ -36,6 +38,7 @@ const useFetch = (collection) => {
 
                 if(subscribe.current){
                     setTickets(ticket);
+                    setLoading(false);
                 }
             }, (error) => {
                 console.log(error.message);
@@ -45,7 +48,7 @@ const useFetch = (collection) => {
         return () => subscribe.current = false;
     }, [collection]);
 
-    return { tickets };
+    return { tickets, loading };
 }
 
 export default useFetch;

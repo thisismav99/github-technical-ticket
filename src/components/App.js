@@ -30,6 +30,10 @@ function App() {
           <Route path="/dashboard">
             { signedIn ? <Dashboard /> : <Redirect to="/" /> }
           </Route>
+
+          <Route path="*">
+              <Redirect to="/dashboard" />
+          </Route>
         </Switch>
       </Router>
     </>

@@ -2,11 +2,12 @@ import useFetch from "../../hooks/useFetch";
 import useHighlight from "../../hooks/useHighlight";
 import useTitle from "../../hooks/useTitle";
 import { Link } from "react-router-dom";
+import Loading from "../dashboard/Loading";
 
 const TicketList = () => {
     useTitle("TICKET APP - DASHBOARD");
     
-    const { tickets } = useFetch("tickets");
+    const { tickets, loading } = useFetch("tickets");
 
     const { highlight } = useHighlight("ticketlist");
 
@@ -17,6 +18,7 @@ const TicketList = () => {
 
     return (
         <div className="grid grid-cols-12 gap-2 text-center">
+            { loading && <Loading /> }
             { tickets && 
               tickets.map((ticket) => (
                 <div className="col-span-12 mx-2" key={ticket.id}>
