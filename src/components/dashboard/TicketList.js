@@ -4,7 +4,7 @@ import useTitle from "../../hooks/useTitle";
 import { Link } from "react-router-dom";
 import Loading from "../dashboard/Loading";
 
-const TicketList = () => {
+const TicketList = ({email}) => {
     useTitle("TICKET APP - DASHBOARD");
     
     const { tickets, loading } = useFetch("tickets");
@@ -33,9 +33,12 @@ const TicketList = () => {
                                 <p>{new Date(ticket.createdAt.toDate()).toString()}</p>
                                 <p>{ticket.user}</p>
                             </div>
-                            <Link to={`/solve/${ticket.id}`}>
-                                <button className="btn">SOLVE</button>
-                            </Link>
+                            {
+                                email !== ticket.user &&
+                                <Link to={`/solve/${ticket.id}`}>
+                                    <button className="btn">SOLVE</button>
+                                </Link>
+                            }
                         </div>
                     </div>
                 </div>

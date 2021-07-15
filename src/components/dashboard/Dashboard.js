@@ -21,12 +21,13 @@ const Dashboard = () => {
                                 <button id="create-ticket-btn" className="dashboard-btn">CREATE TICKET</button>
                             </Link>
                         </div>
+                        <p className="text-green-500 w-full mt-10">WELCOME, {email}</p>
                     </div>
                 </div>
                 <div className="col-span-10">
                     <Switch>
                         <Route path="/dashboard">
-                            <TicketList />
+                            { email && <TicketList email={email} /> }
                         </Route>
                         <Route path="/createticket">
                             { email && <CreateTicket email={email} />}
