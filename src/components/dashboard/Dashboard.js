@@ -10,7 +10,7 @@ const Dashboard = () => {
     return (
         <Router>
             <div className="py-20 grid grid-cols-12">
-                <div className="col-span-2 text-center border-solid border-r-2 border-green-500 h-screen">
+                <div className="col-span-2 text-center">
                     <div className="flex flex-wrap">
                         <p className="text-green-500 text-xl underline w-full">DASHBOARD</p>
                         <div className="w-full mt-3">
