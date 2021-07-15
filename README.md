@@ -1,3 +1,3 @@
 # TECHNICAL TICKET SYSTEM
 
-My first Application using the React JS, Tailwind CSS and Firebase.
+My first application using React JS, Tailwind CSS and Firebase.
